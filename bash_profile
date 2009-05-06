@@ -28,7 +28,8 @@ git rebase $to
 echo "-- 4. Switching back to '$to'..."
 git co master
 echo "-- 5. Merging in '$from'..."
-git merge $fromecho "-- 6. Displaying branch status..."
+git merge $from
+echo "-- 6. Displaying branch status..."
 git wtf
 echo "== Would you like to push '$from' to '$to'? y for YES"
 read INPUT
