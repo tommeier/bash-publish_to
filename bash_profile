@@ -33,7 +33,7 @@ git wtf
 echo "== Would you like to push '$from' to '$to'? y for YES"
 read INPUT
 if [ "$INPUT" == "y" ]; then
-        echo "-- 6. Pushing changes on '$from' to '$to' (please wait)..."
+        echo "-- 7. Pushing changes on '$from' to '$to' (please wait)..."
         sleep 1
         git push
 else
