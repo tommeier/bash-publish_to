@@ -1,3 +1,8 @@
+Requirements :
+
+git wtf - http://github.com/michaelklishin/git-wtf/ - Clearer display of state on remote and local branches
+
+
 Sources :
 
 Jeremy Friesen - http://reclusive-geek.blogspot.com/ (for the current git branch magic)
@@ -5,3 +10,4 @@ Jeremy Friesen - http://reclusive-geek.blogspot.com/ (for the current git branch
 TODO : 
 - Switch request statement to be fixed options.
 - Make comments clearer in listings
+- Fix up README to explain purpose and what it does
