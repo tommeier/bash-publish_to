@@ -30,7 +30,7 @@ For example (on branch 'dev' wanting to publish to 'master' before pushing live)
  * Jeremy Friesen - http://reclusive-geek.blogspot.com/ - for the current git branch magic
 
 ## ToDo 
-
+ * Display git diff pretty graph if push is not selected to display one line differences.
  * Switch request statement to be fixed options.
  * Make comments clearer in listings
  *Fix up README to explain purpose and what it does

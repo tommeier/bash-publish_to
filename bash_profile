@@ -26,7 +26,7 @@ git co $from
 echo "-- 3. Rebasing '$to' to include '$from'..."
 git rebase $to
 echo "-- 4. Switching back to '$to'..."
-git co master
+git co $to
 echo "-- 5. Merging in '$from'..."
 git merge $from
 echo "-- 6. Displaying branch status..."
