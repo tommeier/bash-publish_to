@@ -27,7 +27,7 @@ git checkout $to && git pull
 echo "-- 2. Switching back to '$from'..."
 git checkout $from
 echo "-- 3. Rebasing '$to' to include '$from'..."
-git rebase $to
+git rebase $to --whitespace=nowarn|
 echo "-- 4. Switching back to '$to'..."
 git checkout $to
 echo "-- 5. Merging in '$from'..."
