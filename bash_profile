@@ -1,3 +1,6 @@
+#---------------------------------------------------------------------------#
+#--                   publish_to functions                                --#
+#---------------------------------------------------------------------------#
 function publish_to {
 current_branch=$(git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/\1 /')
 
@@ -20,13 +23,13 @@ elif [ "$to" == "" ]; then
         echo "== Error - Please specify branch to publish to"; return;
 fi
 echo "-- 1. Checking out '$to' to latest version..."
-git co $to && git pull
+git checkout $to && git pull
 echo "-- 2. Switching back to '$from'..."
-git co $from
+git checkout $from
 echo "-- 3. Rebasing '$to' to include '$from'..."
 git rebase $to
 echo "-- 4. Switching back to '$to'..."
-git co $to
+git checkout $to
 echo "-- 5. Merging in '$from'..."
 git merge $from
 echo "-- 6. Displaying branch status..."
@@ -42,3 +45,6 @@ else
 fi
 echo "== All actions completed..."
 }
+#---------------------------------------------------------------------------#
+#--                   end of publish_to functions                         --#
+#---------------------------------------------------------------------------#
