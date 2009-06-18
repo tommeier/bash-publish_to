@@ -15,7 +15,7 @@ Simple little script in bash to publish the current branch that you're on to a t
 
  * Enter the branch you wish to publish *from* and run the following command:
 		publish_to <branch you wish to publish to>
- * After viewing the 'git wtf' output that shows status of remote and local branch, and if you're happy with it respond 'y' to push branch.
+ * After viewing the 'git wtf' output that shows status of remote and local branch, and if you're happy with it select the remote you'd like to push to.
 
 For example (on branch 'dev' wanting to publish to 'master' before pushing live):
 		branch-dev $ publish_to master
@@ -24,12 +24,11 @@ For example (on branch 'dev' wanting to publish to 'master' before pushing live)
 
  * git wtf - http://github.com/michaelklishin/git-wtf/ - Clearer display of state on remote and local branches
 
-## Credit
+## Credits
 
  * Justin French - http://github.com/justinfrench - for the original static publishing requirements
  * Jeremy Friesen - http://reclusive-geek.blogspot.com/ - for the current git branch magic
 
-## ToDo 
+## TODO (and possible ideas) 
  * Display git diff pretty graph if push is not selected to display one line differences.
- * Make comments clearer in listings
- *Fix up README to explain purpose and what it does
+ * Make comments clearer in listings.

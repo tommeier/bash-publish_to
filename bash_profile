@@ -34,26 +34,39 @@ echo "-- 5. Merging in '$from'..."
 git merge $from
 echo "-- 6. Displaying branch status..."
 git wtf
-read -r -a remotes <<< "$(git remote)"
-remote=${remotes[0]}
-echo "== Would you like to push '$from' to '$to'? Please select option (or any key to skip):"
-echo "1) Push '$to' - (git push $remote $to)"
-echo "2) Push all - (git push)" 
+publish_push_options  
+echo "== All actions completed..."
+} 
+function publish_push_options {
+remotes=""
+normal_options=1
+read -a remotes <<< $(git remote)
+remote_count=${#remotes[@]}
+remote="${remotes[0]}"
+printf "\n\n\n\n== Would you like to push? Please select option (or any key to skip):\n"
+echo "1) Push all - (git push)"
+if [ $remote_count -ge 1 ]; then 
+for ((i=0; i<$remote_count; i++))
+do
+echo "$((i+($normal_options+1)))) Push '$to' - (git push ${remotes[$i]} $to)" 
+done
+fi 
 echo "-) Skip"
 read -n1 -s -r -t30 INPUT  
 case "$INPUT" in
 "1")
-echo "-- 7. Pushing all changes on '$to' to remote '$remote' (please wait)..."
-sleep 1
-git push $remote $to;;
-"2")
-echo "-- 7. Pushing all changes on '$from' to '$to' (please wait)..."
+echo "== Pushing all changes on '$to' (please wait)..."
 sleep 1
 git push;;
 *)
-echo "== Please complete publish with 'git push remote $to' / 'git push' while in '$to' whenever you're ready";;
+if [ $INPUT -le $(($normal_options+$remote_count)) ]; then 
+remote="${remotes[($INPUT-($normal_options+1))]}";
+echo "== $INPUT Pushing all changes on '$to' to remote '$remote' (please wait)...";
+git push $remote $to;
+else
+echo "== Please complete publish with 'git push $remote $to' / 'git push' while in '$to' whenever you're ready" ; 
+fi;;
 esac  
-echo "== All actions completed..."
 }
 #---------------------------------------------------------------------------#
 #--                   end of publish_to functions                         --#
