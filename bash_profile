@@ -34,23 +34,24 @@ echo "-- 5. Merging in '$from'..."
 git merge $from
 echo "-- 6. Displaying branch status..."
 git wtf
+read -r -a remotes <<< "$(git remote)"
+remote=${remotes[0]}
 echo "== Would you like to push '$from' to '$to'? Please select option (or any key to skip):"
-echo "1) Push '$to'"
-echo "2) Push all"
+echo "1) Push '$to' - (git push $remote $to)"
+echo "2) Push all - (git push)" 
 echo "-) Skip"
 read -n1 -s -r -t30 INPUT  
-
 case "$INPUT" in
 "1")
-echo "-- 7. Pushing all changes on '$from' to '$to' (please wait)..."
+echo "-- 7. Pushing all changes on '$to' to remote '$remote' (please wait)..."
 sleep 1
-git push --repo=$to;;
+git push $remote $to;;
 "2")
 echo "-- 7. Pushing all changes on '$from' to '$to' (please wait)..."
 sleep 1
 git push;;
 *)
-echo "== Please complete publish with 'git push --repo=$to' / 'git push' while in '$to' whenever you're ready";;
+echo "== Please complete publish with 'git push remote $to' / 'git push' while in '$to' whenever you're ready";;
 esac  
 echo "== All actions completed..."
 }
