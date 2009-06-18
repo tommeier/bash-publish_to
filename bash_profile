@@ -59,7 +59,7 @@ echo "== Pushing all changes on '$to' (please wait)..."
 sleep 1
 git push;;
 *)
-if [ $INPUT -le $(($normal_options+$remote_count)) ]; then 
+if [ "$INPUT" \< "$(($normal_options+$remote_count+1))" ]; then 
 remote="${remotes[($INPUT-($normal_options+1))]}";
 echo "== $INPUT Pushing all changes on '$to' to remote '$remote' (please wait)...";
 git push $remote $to;

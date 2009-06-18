@@ -31,4 +31,3 @@ For example (on branch 'dev' wanting to publish to 'master' before pushing live)
 
 ## TODO (and possible ideas) 
  * Display git diff pretty graph if push is not selected to display one line differences.
- * Make comments clearer in listings.
