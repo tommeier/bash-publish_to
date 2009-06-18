@@ -38,15 +38,15 @@ echo "== Would you like to push '$from' to '$to'? Please select option (or any k
 echo "1) Push '$to'"
 echo "2) Push all"
 echo "-) Skip"
-read -n1 INPUT  
+read -n1 -s -r -t30 INPUT  
 
 case "$INPUT" in
 "1")
-echo "-- 7. Pushing changes on '$from' (please wait)..."
+echo "-- 7. Pushing all changes on '$from' to '$to' (please wait)..."
 sleep 1
 git push --repo=$to;;
 "2")
-echo "-- 7. Pushing all (please wait)..."
+echo "-- 7. Pushing all changes on '$from' to '$to' (please wait)..."
 sleep 1
 git push;;
 *)
