@@ -34,15 +34,24 @@ echo "-- 5. Merging in '$from'..."
 git merge $from
 echo "-- 6. Displaying branch status..."
 git wtf
-echo "== Would you like to push '$from' to '$to'? y for YES"
-read INPUT
-if [ "$INPUT" == "y" ]; then
-        echo "-- 7. Pushing changes on '$from' to '$to' (please wait)..."
-        sleep 1
-        git push
-else
-        echo "== Please complete publish with 'git push' in '$to' whenever you're ready"
-fi
+echo "== Would you like to push '$from' to '$to'? Please select option (or any key to skip):"
+echo "1) Push '$to'"
+echo "2) Push all"
+echo "-) Skip"
+read -n1 INPUT  
+
+case "$INPUT" in
+"1")
+echo "-- 7. Pushing changes on '$from' (please wait)..."
+sleep 1
+git push --repo=$to;;
+"2")
+echo "-- 7. Pushing all (please wait)..."
+sleep 1
+git push;;
+*)
+echo "== Please complete publish with 'git push --repo=$to' / 'git push' while in '$to' whenever you're ready";;
+esac  
 echo "== All actions completed..."
 }
 #---------------------------------------------------------------------------#
