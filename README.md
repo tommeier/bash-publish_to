@@ -4,11 +4,26 @@
 
 Sick of nasty merge commits messing up your code base in a medium-large collaborative team coding environment? Run this command before any push and be sure before publishing.
 
-Simple little script in bash to publish the current branch that you're on to a target branch (both local or remote). Performing all required git functions to ensure a synced branch with live (pull, rebase, merge etc).
+Simple little script in bash to publish the current branch that you're on to a target branch (both local or remote). Performing all required git functions to ensure a synced branch with live (pull, rebase, merge etc). At the end of the process a list of all available remote branches is given to push to.
   
 ## Install
 
- * Cut paste the functions in the 'bash_profile' file into your ~/.bash_profile (or whatever your bash config file is)
+Either: 
+
+ * Clone this repo
+		cd ~
+		mkdir bashscripts
+		cd bashscripts/
+		git clone git://github.com/tommeier/bash-publish_to.git publish_to
+ * and then add the following line anywhere in your bash_profile (or whatever your bash config is) to include this script
+ 		source ~/bashscripts/bash-publish_to/bash_publish_to.sh
+
+Or
+
+ * Cut paste the functions in the 'bash_publish_to.sh' file into your ~/.bash_profile (or whatever your bash config file is)
+
+Then
+
  * Open terminal/bash (or reload if already open, e.g.: 'source ~/.bash_profile')
 
 ## Usage
@@ -29,5 +44,5 @@ For example (on branch 'dev' wanting to publish to 'master' before pushing live)
  * Justin French - http://github.com/justinfrench - for the original static publishing requirements
  * Jeremy Friesen - http://reclusive-geek.blogspot.com/ - for the current git branch magic
 
-## TODO (and possible ideas) 
+## ToDo (and possible ideas) 
  * Display git diff pretty graph if push is not selected to display one line differences.
