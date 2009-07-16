@@ -23,7 +23,8 @@ elif [ "$to" == "" ]; then
         echo "== Error - Please specify branch to publish to"; return;
 fi
 echo "-- 1. Checking out '$to' to latest version..."
-git checkout $to && git pull
+git checkout $to
+git pull --rebase
 echo "-- 2. Switching back to '$from'..."
 git checkout $from
 echo "-- 3. Rebasing '$to' to include '$from'..."
