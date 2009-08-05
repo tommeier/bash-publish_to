@@ -39,6 +39,9 @@ For example (on branch 'dev' wanting to publish to 'master' before pushing live)
 
  * git wtf - http://github.com/michaelklishin/git-wtf/ - Clearer display of state on remote and local branches
 
+## To Do
+ * Add exception catching for when a conflict occurs.
+
 ## Credits
 
  * Justin French - http://github.com/justinfrench - for the original static publishing requirements
