@@ -75,13 +75,14 @@ esac
 function startup {
 #Quick function to start the day and grab the latest info, then rebase your dev branch
 primary=$1
+devbranch=''
 if [ "$primary" == "" ]; then
-        echo "== Defaulting to 'startup master'"; primary = 'master'; return;
+        echo "== Defaulting to 'startup master'"; primary = 'master';
 fi
 if [ "$primary" == "master" ]; then
-        devbranch = 'dev'; return;
+        devbranch='dev';
 else
-        devbranch = $primary + '_dev'; return;
+        devbranch=$primary + '_dev';
 fi
 echo "== Upgrading '$devbranch'"
 echo "-- 1. Checking out '$primary' to latest version..."
