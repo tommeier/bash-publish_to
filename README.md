@@ -44,7 +44,7 @@ For example (on branch 'dev' wanting to publish to 'master' before pushing live)
 
 ## To Do
  * Add exception catching for when a conflict occurs.
-
+ * On startup script allow selection of the 'master/dev' branch based on possible branches in git
 ## Credits
 
  * Justin French - http://github.com/justinfrench - for the original static publishing requirements

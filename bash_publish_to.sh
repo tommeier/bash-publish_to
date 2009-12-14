@@ -77,7 +77,7 @@ function startup {
 primary=$1
 devbranch=''
 if [ "$primary" == "" ]; then
-        echo "== Defaulting to 'startup master'"; primary = 'master';
+        echo "== Defaulting to 'startup master'"; primary='master';
 fi
 if [ "$primary" == "master" ]; then
         devbranch='dev';
