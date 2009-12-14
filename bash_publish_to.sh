@@ -72,7 +72,7 @@ esac
 #---------------------------------------------------------------------------#
 #--                   end of publish_to functions                         --#
 #---------------------------------------------------------------------------#
-function start_up {
+function startup {
 #Quick function to start the day and grab the latest info, then rebase your dev branch
 primary=$1
 if [ "$primary" == "" ]; then
