@@ -35,9 +35,9 @@ echo "-- 5. Merging in '$from'..."
 git merge $from
 echo "-- 6. Displaying branch status..."
 git wtf
-publish_push_options  
+publish_push_options
 echo "== All actions completed..."
-} 
+}
 function publish_push_options {
 remotes=""
 normal_options=1
@@ -46,29 +46,50 @@ remote_count=${#remotes[@]}
 remote="${remotes[0]}"
 printf "\n\n\n\n== Would you like to push? Please select option (or any key to skip):\n"
 echo "1) Push all - (git push)"
-if [ $remote_count -ge 1 ]; then 
+if [ $remote_count -ge 1 ]; then
 for ((i=0; i<$remote_count; i++))
 do
-echo "$((i+($normal_options+1)))) Push '$to' - (git push ${remotes[$i]} $to)" 
+echo "$((i+($normal_options+1)))) Push '$to' - (git push ${remotes[$i]} $to)"
 done
-fi 
+fi
 echo "-) Skip"
-read -n1 -s -r -t30 INPUT  
+read -n1 -s -r -t30 INPUT
 case "$INPUT" in
 "1")
 echo "== Pushing all changes on '$to' (please wait)..."
 sleep 1
 git push;;
 *)
-if [ "$INPUT" \< "$(($normal_options+$remote_count+1))" ]; then 
+if [ "$INPUT" \< "$(($normal_options+$remote_count+1))" ]; then
 remote="${remotes[($INPUT-($normal_options+1))]}";
 echo "== $INPUT Pushing all changes on '$to' to remote '$remote' (please wait)...";
 git push $remote $to;
 else
-echo "== Please complete publish with 'git push $remote $to' / 'git push' while in '$to' whenever you're ready" ; 
+echo "== Please complete publish with 'git push $remote $to' / 'git push' while in '$to' whenever you're ready" ;
 fi;;
-esac  
+esac
 }
 #---------------------------------------------------------------------------#
 #--                   end of publish_to functions                         --#
 #---------------------------------------------------------------------------#
+function start_up {
+#Quick function to start the day and grab the latest info, then rebase your dev branch
+primary=$1
+if [ "$primary" == "" ]; then
+        echo "== Defaulting to 'startup master'"; primary = 'master'; return;
+fi
+if [ "$primary" == "master" ]; then
+        devbranch = 'dev'; return;
+else
+        devbranch = $primary + '_dev'; return;
+fi
+echo "== Upgrading '$devbranch'"
+echo "-- 1. Checking out '$primary' to latest version..."
+git checkout $primary
+git pull --rebase
+echo "-- 2. Switching back to '$devbranch'..."
+git checkout $devbranch
+echo "-- 3. Rebasing '$devbranch' to include '$primary'..."
+git rebase $primary
+echo "== All actions completed..."
+}
