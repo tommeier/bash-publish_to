@@ -24,11 +24,12 @@ elif [ "$to" == "" ]; then
 fi
 echo "-- 1. Checking out '$to' to latest version..."
 git checkout $to
-git pull --rebase
+git fetch origin
+git rebase -p origin/$to
 echo "-- 2. Switching back to '$from'..."
 git checkout $from
-echo "-- 3. Rebasing '$to' to include '$from'..."
-git rebase $to
+echo "-- 3. Rebasing '$to' to include '$from' (with -p to preserve )..."
+git rebase -p $to
 echo "-- 4. Switching back to '$to'..."
 git checkout $to
 echo "-- 5. Merging in '$from'..."
@@ -87,7 +88,8 @@ fi
 echo "== Upgrading '$devbranch'"
 echo "-- 1. Checking out '$primary' to latest version..."
 git checkout $primary
-git pull --rebase
+git fetch origin
+git rebase -p origin/$primary
 echo "-- 2. Switching back to '$devbranch'..."
 git checkout $devbranch
 echo "-- 3. Rebasing '$devbranch' to include '$primary'..."
