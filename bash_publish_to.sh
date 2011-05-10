@@ -73,26 +73,3 @@ esac
 #---------------------------------------------------------------------------#
 #--                   end of publish_to functions                         --#
 #---------------------------------------------------------------------------#
-function startup {
-#Quick function to start the day and grab the latest info, then rebase your dev branch
-primary=$1
-devbranch=''
-if [ "$primary" == "" ]; then
-        echo "== Defaulting to 'startup master'"; primary='master';
-fi
-if [ "$primary" == "master" ]; then
-        devbranch='dev';
-else
-        devbranch=$primary + '_dev';
-fi
-echo "== Upgrading '$devbranch'"
-echo "-- 1. Checking out '$primary' to latest version..."
-git checkout $primary
-git fetch origin
-git rebase -p origin/$primary
-echo "-- 2. Switching back to '$devbranch'..."
-git checkout $devbranch
-echo "-- 3. Rebasing '$devbranch' to include '$primary'..."
-git rebase $primary
-echo "== All actions completed..."
-}
