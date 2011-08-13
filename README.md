@@ -40,7 +40,7 @@ For example (on branch 'dev' wanting to publish to 'master' before pushing live)
 
 ## Requirements
 
- * git wtf - http://github.com/michaelklishin/git-wtf/ - Clearer display of state on remote and local branches
+ * git wtf - Install via the maintained brew recipe : brew install willgit
 
 ## To Do
  * Add exception catching for when a conflict occurs.
